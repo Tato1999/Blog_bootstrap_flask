@@ -16,7 +16,7 @@ def send_mail(name,mail,msg):
         connection.login(user=my_mail, password=password)
         connection.sendmail(
             from_addr=my_mail, 
-            to_addrs="tarieli.tabatadze@gtu.ge",
+            to_addrs="***************",
             msg=f"Subject: {name}\n\n {mail} \n contact:{msg}"
         )
 @app.route('/')
