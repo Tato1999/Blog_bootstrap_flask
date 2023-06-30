@@ -9,8 +9,8 @@ import datetime
 import smtplib
 
 
-corp_mail = "tato.tabatadze.1999@gmail.com"
-corp_mail_password = "pxiiksgjywzcxite"
+corp_mail = "******************@gmail.com"
+corp_mail_password = "*********************"
 
 
 date = datetime.datetime.now().date()
