@@ -6,11 +6,36 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditor, CKEditorField
 import datetime
+import smtplib
+
+
+corp_mail = "tato.tabatadze.1999@gmail.com"
+corp_mail_password = "pxiiksgjywzcxite"
 
 
 date = datetime.datetime.now().date()
 
+def send_mail(s,n,m,b):
+    with smtplib.SMTP("smtp.gmail.com",587) as connection:
+        connection.starttls()
+        connection.login(user=corp_mail, password=corp_mail_password)
+        connection.sendmail(
+            from_addr=corp_mail, 
+            to_addrs=corp_mail,
+            msg=f"""Subject: information about: {s}'\n\ncontact:\nNumber: {n}\nEmail: {m}\n
+            {b}"""
+        )
 
+# def send_confirm_mail(m):
+#     with smtplib.SMTP('stmp.gmail.com',587) as connection:
+#         connection.starttls()
+#         connection.login(user=corp_mail,password=corp_mail_password)
+#         connection.sendmail(
+#             from_addr=corp_mail, 
+#             to_addrs=m,
+#             msg=f"""Mail Successful Recived"""
+#         )
+### code need fixing//have socket error, need client to wait when script connect right port
 
 ## Delete this code:
 # import requests
@@ -119,9 +144,32 @@ def about():
 
 
 
-@app.route("/contact")
+@app.route("/contact", methods = ["GET","POST"])
 def contact():
-    return render_template("contact.html")
+    print('name')
+    if request.method == 'POST':
+        name = request.form['name']
+        mail = request.form['mail']
+        tel = request.form['tel']
+        msg = request.form['msg']
+        print(type(mail))
+        print(mail)
+        if mail == '' :
+            return render_template('contact.html', MSG = "Fail:First fill Email Address Graph")
+        else:
+            if name == '':
+                return render_template('contact.html', MSG = "Fail:First fill Name Graph")
+            else:
+                if tel == '':
+                    return render_template('contact.html', MSG = "Fail:First fill Number Graph")
+                else:
+                    send_mail(name,tel,mail,msg)
+                    print(mail)
+                    return render_template('contact.html', MSG = "Success")
+                    
+
+    return render_template("contact.html", MSG = 'Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!')
+
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0', port=5000)
