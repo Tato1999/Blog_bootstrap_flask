@@ -1,0 +1,74 @@
+{% include "header.html" %}
+
+
+
+<header class="masthead" style="background-image: url('../static/img/login.jpg');height: 100vh; z-index: -1;">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Register</h1>
+            <!-- <span class="subheading">A collection of Tato's random musings.</span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<body>
+<div class="input-group mx-auto justify-content-center">
+<!-- Section: Design Block -->
+<section class="text-center">
+  
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -50px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">Sign up now</h2>
+            <form action="{{url_for('register')}}" method = "POST">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" name="name" id="form3Example1" class="form-control" />
+                    <label class="form-label" for="form3Example1">First name</label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" name="lastName" id="form3Example2" class="form-control" />
+                    <label class="form-label" for="form3Example2">Last name</label>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3" style="color: red;">{{txt}}</label>
+                <input type="email" name="mail" id="form3Example3" class="form-control" />
+                <label class="form-label" for="form3Example3">Email address</label>
+              </div>
+  
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="password" name="password" id="form3Example4" class="form-control" />
+                <label class="form-label" for="form3Example4" minlength = "8">Password</label>
+              </div>
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Sign up
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+ </div>
+</body>

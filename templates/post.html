@@ -25,10 +25,12 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             {{post.body}}
            <hr>
-           <div class="clearfix">
-          <a class="btn btn-primary float-right" href="{{url_for('edit_post', post_id=post.id)}}">Edit Post</a> -->
+          {%if current_user.permission == 2%}
+            <div class="clearfix">
+              <a class="btn btn-primary float-right" href="{{url_for('edit_post', post_id=post.id)}}">Edit Post</a>
+            </div>
+          {%endif%}
         </div>
-          </div>
       </div>
     </div>
   </article>

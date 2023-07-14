@@ -1,7 +1,7 @@
 {% include "header.html" %}
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('https://images.unsplash.com/photo-1470092306007-055b6797ca72?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')">
+  <header class="masthead" style="background-image: url('https://images.unsplash.com/photo-1470092306007-055b6797ca72?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80');height: 100vh;">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -30,9 +30,11 @@
             </h3>
           </a>
           <p class="post-meta">Posted by
-            <a href="#">{{post.author}}</a>
+            <a href="#">{{post.aut.name}}</a>
             on {{post.date}}
+            {%if current_user.permission == 2%}
             <a href="{{url_for('delete_post', n=post.id) }}">✘</a>
+            {%endif%}
           </p>
         </div>
         <hr>
@@ -40,9 +42,11 @@
 
 
         <!-- New Post -->
+        {%if current_user.permission == 2%} 
         <div class="clearfix">
           <a class="btn btn-primary float-right" href="{{url_for("create")}}">Create New Post</a>
         </div>
+        {%endif%}
       </div>
     </div>
   </div>
