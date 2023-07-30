@@ -18,8 +18,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from flask_gravatar import Gravatar
 Base = declarative_base() 
 
-corp_mail = "tato.tabatadze.1999@gmail.com"
-corp_mail_password = "pxiiksgjywzcxite"
+corp_mail = "†************"
+corp_mail_password = "*******"
 
 
 global user_info, user_mail, comment_object
@@ -348,10 +348,7 @@ if __name__ == "__main__":
 # import random
 # from sqlalchemy.ext.declarative import declarative_base
 
-# Base = declarative_base()
 
-# corp_mail = "tato.tabatadze.1999@gmail.com"
-# corp_mail_password = "pxiiksgjywzcxite"
 
 # global user_info, user_mail, login_bool
 
